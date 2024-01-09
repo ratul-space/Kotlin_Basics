@@ -14,6 +14,10 @@ enum class States {
     FAILED
 }
 
+enum class Weekdays {
+    SUN, MUN, TUE, WED, THU, FRI, SAT
+}
+
 class MainActivity : AppCompatActivity() {
 
     private val TAG: String = javaClass.simpleName
@@ -27,6 +31,10 @@ class MainActivity : AppCompatActivity() {
 
         if (cheakState(49) == States.FAILED) Log.d(TAG, "FAILED")
         if (cheakState(51) == States.SUCCEEDED) Log.d(TAG, "SUCCEEDED")
+
+        for (day in Weekdays.values()) {
+            Log.d(TAG, "${day.name} = ${day.ordinal}")
+        }
     }
 
     fun giveAnswer(ans: Answers): String {
