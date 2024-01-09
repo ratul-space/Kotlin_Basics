@@ -29,8 +29,18 @@ class MainActivity : AppCompatActivity() {
         countryIndia.name = "India"
         countryIndia.capital = "Delhi"
 
+
+
         countrylist.add(countryIndia)
         countrylist.add(Country("Nepal", "Kathmandu"))
+
+        var (name, capital) = countryIndia
+
+        var countrySrilanka = countryIndia.copy(name = "Sri lanka")
+        countrySrilanka.capital = "kotte"
+
+        countrylist.add(countrySrilanka)
+
 
         for (country in countrylist) {
             Log.d(TAG, "onCreate: name = ${country.name}, capital = ${country.capital}")
