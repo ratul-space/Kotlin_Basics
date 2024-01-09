@@ -13,9 +13,11 @@ class MainActivity : AppCompatActivity() {
 
         var base: Base = Base()
         base.sayHi()
+        Log.d(TAG, "onCreate base.name = ${base.name}")
         var derived: Derived = Derived()
         derived.sayHi()
-
+        Log.d(TAG, "onCreate derived.name = ${derived.name}")
+        derived.tellYourName()
     }
 }
 
@@ -28,7 +30,10 @@ open class Base {
 }
 
 class Derived : Base() {
-
+    val id = 100
+    fun tellYourName() {
+        Log.d("Derived", "My name is $name")
+    }
 }
 
 
