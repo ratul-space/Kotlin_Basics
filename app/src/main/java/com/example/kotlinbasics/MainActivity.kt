@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.drawable.shapes.Shape
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -21,57 +22,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var shapeOne: Shape = Circle(0, 0)
-        var shapetwo: Shape = Rectangle(100, 100)
+        var countrylist = mutableListOf<Country>()
+        countrylist.add(Country("Bangladesh", "Dhaka"))
 
-        shapeOne.draw()
-        shapetwo.draw()
+        var countryIndia = Country("", "")
+        countryIndia.name = "India"
+        countryIndia.capital = "Delhi"
+
+        countrylist.add(countryIndia)
+        countrylist.add(Country("Nepal", "Kathmandu"))
+
+        for (country in countrylist) {
+            Log.d(TAG, "onCreate: name = ${country.name}, capital = ${country.capital}")
+        }
+
 
     }
 }
 
-private fun Shape.draw() {
-
-
-}
-
-var DRAWTAG: String = "SampleDrawing"
-
-abstract class shape(xPos: Int, yPos: Int) {
-
-    var x: Int = xPos
-    var y: Int = yPos
-
-    abstract fun draw()
-}
-
-class Circle(xPos: Int, yPos: Int) : Shape() {
-    override fun draw(canvas: Canvas?, paint: Paint?) {
-        val xPos = 0
-        val x: Int = xPos
-        val yPos = 0
-        var y: Int = yPos
-        Log.d(DRAWTAG, "Drawing circle using circle drawing formula on position (${x}, ${y}).")
-
-    }
-}
-
-class Rectangle(xPos: Int, yPos: Int) : Shape() {
-    override fun draw(canvas: Canvas?, paint: Paint?) {
-        val xPos = 0
-        val x: Int = xPos
-        val yPos = 0
-        var y: Int = yPos
-
-
-        Log.d(
-            DRAWTAG,
-            "Drawing rectangle using rectangle drawing formula on position (${x}, ${y})."
-        )
-    }
-
-}
-
+data class Country(var name: String, var capital: String)
 
 
 
