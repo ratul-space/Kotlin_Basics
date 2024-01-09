@@ -1,21 +1,17 @@
 package com.example.kotlinbasics
 
-import android.annotation.SuppressLint
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.drawable.shapes.Shape
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.core.widgets.Rectangle
-import com.google.android.gms.maps.model.Circle
+
 
 enum class Answers {
     YES, NO, NOT_ANSWERED
+}
+
+enum class States {
+    SUCCEEDED,
+    FAILED
 }
 
 class MainActivity : AppCompatActivity() {
@@ -28,19 +24,27 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, giveAnswer(Answers.YES))
         Log.d(TAG, giveAnswer(Answers.NO))
         Log.d(TAG, giveAnswer(Answers.NOT_ANSWERED))
+
+        if (cheakState(49) == States.FAILED) Log.d(TAG, "FAILED")
+        if (cheakState(51) == States.SUCCEEDED) Log.d(TAG, "SUCCEEDED")
     }
 
-
     fun giveAnswer(ans: Answers): String {
-        when (ans) {
-            Answers.YES -> return "Answered: yes"
-            Answers.NO -> return "Answered: no"
-            Answers.NOT_ANSWERED -> return "Not answered"
-
+        return when (ans) {
+            Answers.YES -> "Answered: yes"
+            Answers.NO -> "Answered: no"
+            Answers.NOT_ANSWERED -> "Not answered"
 
         }
     }
+
+    fun cheakState(value: Int): States {
+        return if (value <= 50) States.FAILED
+        else States.SUCCEEDED
+
+    }
 }
+
 
 
 
