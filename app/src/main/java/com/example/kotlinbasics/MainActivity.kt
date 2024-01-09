@@ -14,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.core.widgets.Rectangle
 import com.google.android.gms.maps.model.Circle
 
+enum class Answers {
+    YES, NO, NOT_ANSWERED
+}
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,35 +25,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var countrylist = mutableListOf<Country>()
-        countrylist.add(Country("Bangladesh", "Dhaka"))
-
-        var countryIndia = Country("", "")
-        countryIndia.name = "India"
-        countryIndia.capital = "Delhi"
+        Log.d(TAG, giveAnswer(Answers.YES))
+        Log.d(TAG, giveAnswer(Answers.NO))
+        Log.d(TAG, giveAnswer(Answers.NOT_ANSWERED))
+    }
 
 
-
-        countrylist.add(countryIndia)
-        countrylist.add(Country("Nepal", "Kathmandu"))
-
-        var (name, capital) = countryIndia
-
-        var countrySrilanka = countryIndia.copy(name = "Sri lanka")
-        countrySrilanka.capital = "kotte"
-
-        countrylist.add(countrySrilanka)
+    fun giveAnswer(ans: Answers): String {
+        when (ans) {
+            Answers.YES -> return "Answered: yes"
+            Answers.NO -> return "Answered: no"
+            Answers.NOT_ANSWERED -> return "Not answered"
 
 
-        for (country in countrylist) {
-            Log.d(TAG, "onCreate: name = ${country.name}, capital = ${country.capital}")
         }
-
-
     }
 }
-
-data class Country(var name: String, var capital: String)
 
 
 
