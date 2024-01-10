@@ -14,16 +14,21 @@ class MainActivity : AppCompatActivity() {
         var base: Base = Base()
         base.sayHi()
         Log.d(TAG, "onCreate base.name = ${base.name}")
+
         var derived: Derived = Derived()
         derived.sayHi()
         Log.d(TAG, "onCreate derived.name = ${derived.name}")
         derived.tellYourName()
+
+        var derivedTwo: DerivedTwo = DerivedTwo()
+        Log.d(TAG, "onCreate: derivedTwo.name = ${derivedTwo.name}")
+
     }
 }
 
 
 open class Base {
-    val name: String = "Base"
+    open val name: String = "Base"
     fun sayHi() {
         Log.d("Base", "hi from base")
     }
@@ -36,6 +41,9 @@ class Derived : Base() {
     }
 }
 
+class DerivedTwo : Base() {
+    override val name: String = "Derived two"
+}
 
 
 
