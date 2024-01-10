@@ -17,16 +17,25 @@ class MainActivity : AppCompatActivity() {
         var personOne = person("Ratul")
         Log.d(TAG, "onCreate person one: name = ${personOne.name}")
 
+        var personTwo = person("Zoro", 19)
+        Log.d(TAG, "onCreate person two: name = ${personTwo.name}, age = ${personTwo.age}")
+
 
     }
 }
 
 class person(name: String) {
-    val name: String
+    var name: String
+    var age: Int = 0
 
     init {
         this.name = name
     }
+
+    constructor(name: String, age: Int) : this(name) {
+        this.age = age
+    }
+
 }
 
 
