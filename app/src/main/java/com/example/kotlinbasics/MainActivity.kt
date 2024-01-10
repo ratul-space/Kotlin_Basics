@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         var derivedTwo: DerivedTwo = DerivedTwo()
         Log.d(TAG, "onCreate: derivedTwo.name = ${derivedTwo.name}")
+        derivedTwo.tellYourName()
 
     }
 }
@@ -43,6 +44,9 @@ class Derived : Base() {
 
 class DerivedTwo : Base() {
     override val name: String = "Derived two"
+    fun tellYourName() {
+        Log.d("DerivedTwo", "My name is $name")
+    }
 }
 
 
