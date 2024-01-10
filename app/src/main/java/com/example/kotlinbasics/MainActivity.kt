@@ -2,6 +2,7 @@ package com.example.kotlinbasics
 
 import android.icu.lang.UCharacter.GraphemeClusterBreak.L
 import android.os.Bundle
+import android.renderscript.BaseObj
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
@@ -12,19 +13,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var base: Base = Base()
-        base.sayHi()
-        Log.d(TAG, "onCreate base.name = ${base.name}")
+//        var base: Base = Base()
+//        base.sayHi()
+//        Log.d(TAG, "onCreate base.name = ${base.name}")
+//
+//        var derived: Derived = Derived()
+//        derived.sayHi()
+//        Log.d(TAG, "onCreate derived.name = ${derived.name}")
+//        derived.tellYourName()
+//
+//        var derivedTwo: DerivedTwo = DerivedTwo()
+//        derivedTwo.sayHi()
+//        Log.d(TAG, "onCreate: derivedTwo.name = ${derivedTwo.name}")
+//        derivedTwo.tellYourName()
 
-        var derived: Derived = Derived()
-        derived.sayHi()
-        Log.d(TAG, "onCreate derived.name = ${derived.name}")
-        derived.tellYourName()
+        var BaseObj: Base = Base()
+        BaseObj.sayHi()
 
-        var derivedTwo: DerivedTwo = DerivedTwo()
-        derivedTwo.sayHi()
-        Log.d(TAG, "onCreate: derivedTwo.name = ${derivedTwo.name}")
-        derivedTwo.tellYourName()
+        BaseObj = Derived()
+        BaseObj.sayHi()
+
+        BaseObj = DerivedTwo()
+        BaseObj.sayHi()
 
     }
 }
