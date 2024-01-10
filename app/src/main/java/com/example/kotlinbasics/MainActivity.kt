@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var personOne = person("Ratul")
-        Log.d(TAG, "onCreate person one: name = ${personOne.name}")
+        personOne.age = 19
+        Log.d(TAG, "onCreate person one: name = ${personOne.name}, age = ${personOne.age}")
 
         var personTwo = person("Zoro", 19)
         Log.d(TAG, "onCreate person two: name = ${personTwo.name}, age = ${personTwo.age}")
