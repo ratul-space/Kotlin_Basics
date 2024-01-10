@@ -30,6 +30,11 @@ class MainActivity : AppCompatActivity() {
 
 open class Base {
     open val name: String = "Base"
+
+    fun tellYourName() {
+        Log.d(javaClass.simpleName, "My name is $name")
+    }
+
     fun sayHi() {
         Log.d("Base", "hi from base")
     }
@@ -37,16 +42,12 @@ open class Base {
 
 class Derived : Base() {
     val id = 100
-    fun tellYourName() {
-        Log.d("Derived", "My name is $name")
-    }
+    override val name: String = "Derived"
 }
 
 class DerivedTwo : Base() {
     override val name: String = "Derived two"
-    fun tellYourName() {
-        Log.d("DerivedTwo", "My name is $name")
-    }
+
 }
 
 
