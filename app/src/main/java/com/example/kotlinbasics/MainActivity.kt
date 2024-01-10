@@ -1,6 +1,7 @@
 package com.example.kotlinbasics
 
 import android.icu.lang.UCharacter.GraphemeClusterBreak.L
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
 import android.renderscript.BaseObj
 import android.util.Log
@@ -13,64 +14,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        var base: Base = Base()
-//        base.sayHi()
-//        Log.d(TAG, "onCreate base.name = ${base.name}")
-//
-//        var derived: Derived = Derived()
-//        derived.sayHi()
-//        Log.d(TAG, "onCreate derived.name = ${derived.name}")
-//        derived.tellYourName()
-//
-//        var derivedTwo: DerivedTwo = DerivedTwo()
-//        derivedTwo.sayHi()
-//        Log.d(TAG, "onCreate: derivedTwo.name = ${derivedTwo.name}")
-//        derivedTwo.tellYourName()
+        var personOne = person("Ratul")
+        Log.d(TAG, "onCreate person one: name = ${personOne.name}")
 
-        var BaseObj: Base = Base()
-        BaseObj.sayHi()
-
-        BaseObj = Derived()
-        BaseObj.sayHi()
-
-        BaseObj = DerivedTwo()
-        BaseObj.sayHi()
 
     }
 }
 
+class person(name: String) {
+    val name: String
 
-open class Base {
-    open val name: String = "Base"
-
-    fun tellYourName() {
-        Log.d(javaClass.simpleName, "My name is $name")
-    }
-
-    open fun sayHi() {
-        Log.d("Base", "hi from base")
+    init {
+        this.name = name
     }
 }
-
-class Derived : Base() {
-    val id = 100
-    override val name: String = "Derived"
-
-    override fun sayHi() {
-        Log.d(javaClass.simpleName, "My name is: $name and my id is: $id ")
-    }
-}
-
-class DerivedTwo : Base() {
-    override val name: String = "Derived two"
-    override fun sayHi() {
-        Log.d(javaClass.simpleName, "My name is $name and i don,t have any id")
-    }
-
-}
-
-
-
 
 
 
