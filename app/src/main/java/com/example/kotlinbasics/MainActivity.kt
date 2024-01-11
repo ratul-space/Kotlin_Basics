@@ -1,11 +1,9 @@
 package com.example.kotlinbasics
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.L
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Bundle
-import android.renderscript.BaseObj
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +17,11 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate person one: name = ${personOne.name}, age = ${personOne.age}")
 
         var personTwo = person("Zoro", 19)
-        Log.d(TAG, "onCreate person two: name = ${personTwo.name}, age = ${personTwo.age}")
+        personTwo.height = 45.0
+        Log.d(
+            TAG,
+            "onCreate person two: name = ${personTwo.name}, age = ${personTwo.age}, height = ${personTwo.height}"
+        )
 
 
     }
@@ -35,9 +37,28 @@ class person(name: String) {
 
     constructor(name: String, age: Int) : this(name) {
         this.age = age
+
     }
 
+    var gender: String = ""
+    private var _height: Double = 0.0
+    public var height: Double
+        get() = _height
+        set(value) {
+            _height = value
+        }
+
+
+//    var gender: String = ""
+//    public fun getGender(): String{
+//        return gender
+//    }
+//    public fun setGender(gender: String){
+//        this.gender = gender
+//    }
 }
+
+
 
 
 
