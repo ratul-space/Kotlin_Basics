@@ -17,10 +17,10 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate person one: name = ${personOne.name}, age = ${personOne.age}")
 
         var personTwo = person("Zoro", 19)
-        personTwo.height = 45.0
+        personTwo.height = 69.0
         Log.d(
             TAG,
-            "onCreate person two: name = ${personTwo.name}, age = ${personTwo.age}, height = ${personTwo.height}"
+            "onCreate person two: name = ${personTwo.name}, age = ${personTwo.age}, height = ${personTwo.height} inch, is teenage = ${personTwo.isTeenager}"
         )
 
 
@@ -46,6 +46,15 @@ class person(name: String) {
         get() = _height
         set(value) {
             _height = value
+        }
+    var isTeenager: Boolean = false
+        private set
+        get() {
+            var ret: Boolean = false
+            if (age >= 13 && age <= 19) {
+                ret = true
+            }
+            return ret
         }
 
 
