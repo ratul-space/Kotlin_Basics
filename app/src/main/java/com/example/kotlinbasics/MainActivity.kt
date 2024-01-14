@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         return a + b
     }
 
-    fun sumAndPrint(a: Int, b: Int): Unit {
+    fun sumAndPrint(a: Int, b: Int) {
         var sum = a + b
         Log.d(TAG, "sum and print: sum of $a and $b is: $sum  ")
     }
