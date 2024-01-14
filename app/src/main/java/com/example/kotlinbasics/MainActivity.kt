@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "result = " + added)
 
     }
+
 }
 
 fun Int.plusTwo() = this + 200
