@@ -13,12 +13,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var dog: Dog = Dog()
-        var human: Human = Human()
-        var robot: Robot = Robot()
-        var talkingRobot: TalkingRobot = TalkingRobot()
+        val dog: Dog = Dog()
+        dog.bark()
+        val human: Human = Human()
+        Log.d(LOG_TAG, "I am ${human.javaClass.simpleName}, I have life")
+        val robot: Robot = Robot()
+        val talkingRobot: TalkingRobot = TalkingRobot()
+
         var movable: Movable = dog
         movable.move()
+        movable = human
+        movable.move()
+        movable = robot
+        movable.move()
+        movable = talkingRobot
+        movable.move()
+        var eatable: Eatable = dog
+        eatable.eat()
+        eatable = human
+        eatable.eat()
+        var speakable: Speakable = human
+        speakable.speak()
+        speakable = talkingRobot
+        speakable.speak()
+        speakable = human
     }
 }
 
@@ -56,6 +74,7 @@ class Dog : Animal() {
 
 class Human : Animal(), Speakable {
     override fun speak() {
+        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can speak")
     }
 }
 
