@@ -13,28 +13,79 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var result = sum(30, 50)
-        Log.d(TAG, "Result is: $result")
-        Log.d(TAG, "result is: ${max(30, 20)}")
+        var dog: Dog = Dog()
+        var human: Human = Human()
+        var robot: Robot = Robot()
+        var talkingRobot: TalkingRobot = TalkingRobot()
+        var movable: Movable = dog
+        movable.move()
+    }
+}
 
-        sumAndPrint(40, 60)
+val LOG_TAG = "DemoLogs"
 
+interface Movable {
+    fun move()
+}
+
+interface Eatable {
+    fun eat()
+}
+
+interface Speakable {
+    fun speak()
+}
+
+abstract class Animal : Movable, Eatable {
+    val hasLife: Boolean = true
+
+    override fun move() {
+        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can move")
     }
 
-
-    fun sum(a: Int, b: Int): Int {
-        return a + b
+    override fun eat() {
+        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can eat")
     }
+}
 
-    fun sumAndPrint(a: Int, b: Int) {
-        var sum = a + b
-        Log.d(TAG, "sum and print: sum of $a and $b is: $sum  ")
+class Dog : Animal() {
+    fun bark() {
+        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can bark")
     }
+}
 
-    fun max(a: Int, b: Int): Int = if (a > b) a else b
+class Human : Animal(), Speakable {
+    override fun speak() {
+    }
+}
+
+open class Robot : Movable {
+    override fun move() {
+        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can move")
+    }
+}
+
+class TalkingRobot : Robot(), Speakable {
+    override fun speak() {
+        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can speak")
+    }
 }
 
 
+//        var result = sum(30, 50)
+//        Log.d(TAG, "Result is: $result")
+//        Log.d(TAG, "result is: ${max(30, 20)}")
+//        sumAndPrint(40, 60)
+//    }
+//    fun sum(a: Int, b: Int): Int {
+//        return a + b
+//    }
+//    fun sumAndPrint(a: Int, b: Int) {
+//        var sum = a + b
+//        Log.d(TAG, "sum and print: sum of $a and $b is: $sum  ")
+//    }
+//    fun max(a: Int, b: Int): Int = if (a > b) a else b
+//}
 //        val original = 20000
 //        val added = original.plusTwo()
 //
