@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         var result = sum(30, 50)
         Log.d(TAG, "Result is: $result")
+        Log.d(TAG, "result is: ${max(30, 20)}")
 
         sumAndPrint(40, 60)
 
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         var sum = a + b
         Log.d(TAG, "sum and print: sum of $a and $b is: $sum  ")
     }
+
+    fun max(a: Int, b: Int): Int = if (a > b) a else b
 }
 
 
