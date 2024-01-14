@@ -13,31 +13,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val original = 20000
-        val added = original.plusTwo()
-
-
-        Log.d(TAG, "result = $added")
-
-        val myClass1 = MyClass()
-        myClass1.internalFunc()
-        myClass1.internalFunc(200)
+        var result = sum(30, 50)
+        Log.d(TAG, "Result is: $result")
 
     }
-
 }
 
-fun Int.plusTwo() = this + 200
-
-class MyClass {
-    fun internalFunc() {
-        Log.d("MainActivity", "I am the internal fun")
-    }
+fun sum(a: Int, b: Int): Int {
+    return a + b
 }
-
-fun MyClass.internalFunc(value: Int) {
-    Log.d("MainActivity", "I am external fun and my value is: $value")
-}
+//        val original = 20000
+//        val added = original.plusTwo()
+//
+//        Log.d(TAG, "result = $added")
+//
+//        val myClass1 = MyClass()
+//        myClass1.internalFunc()
+//        myClass1.internalFunc(200)
+//    }
+//}
+//fun Int.plusTwo() = this + 200
+//class MyClass {
+//    fun internalFunc() {
+//        Log.d("MainActivity", "I am the internal fun")
+//    }
+//}
+//fun MyClass.internalFunc(value: Int) {
+//    Log.d("MainActivity", "I am external fun and my value is: $value")
+//}
 //        var personOne = person("Ratul")
 //        personOne.age = 19
 //        personOne.gender = "Male"
