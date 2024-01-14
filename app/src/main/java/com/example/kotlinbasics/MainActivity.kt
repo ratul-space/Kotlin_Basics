@@ -16,12 +16,21 @@ class MainActivity : AppCompatActivity() {
         var result = sum(30, 50)
         Log.d(TAG, "Result is: $result")
 
+        sumAndPrint(40, 60)
+
+    }
+
+    fun sum(a: Int, b: Int): Int {
+        return a + b
+    }
+
+    fun sumAndPrint(a: Int, b: Int): Unit {
+        var sum = a + b
+        Log.d(TAG, "sum and print: sum of $a and $b is: $sum  ")
     }
 }
 
-fun sum(a: Int, b: Int): Int {
-    return a + b
-}
+
 //        val original = 20000
 //        val added = original.plusTwo()
 //
