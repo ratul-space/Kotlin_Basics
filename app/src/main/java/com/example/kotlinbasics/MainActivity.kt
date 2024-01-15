@@ -1,94 +1,108 @@
 package com.example.kotlinbasics
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {
 
-    private val TAG: String = javaClass.simpleName
+    private val tAG: String = javaClass.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val dog: Dog = Dog()
-        dog.bark()
-        val human: Human = Human()
-        Log.d(LOG_TAG, "I am ${human.javaClass.simpleName}, I have life")
-        val robot: Robot = Robot()
-        val talkingRobot: TalkingRobot = TalkingRobot()
+        debugPrint("Welcome from a normal function")
+        pringString("Welcome from a higher order function", this::debugPrint)
+    }
 
-        var movable: Movable = dog
-        movable.move()
-        movable = human
-        movable.move()
-        movable = robot
-        movable.move()
-        movable = talkingRobot
-        movable.move()
-        var eatable: Eatable = dog
-        eatable.eat()
-        eatable = human
-        eatable.eat()
-        var speakable: Speakable = human
-        speakable.speak()
-        speakable = talkingRobot
-        speakable.speak()
-        speakable = human
+    fun pringString(str: String, execFun: (msg: String) -> Unit) {
+        return execFun(str)
+    }
+
+    fun debugPrint(msg: String): Unit {
+        Log.d(TAG, msg)
     }
 }
 
-val LOG_TAG = "DemoLogs"
-
-interface Movable {
-    fun move()
-}
-
-interface Eatable {
-    fun eat()
-}
-
-interface Speakable {
-    fun speak()
-}
-
-abstract class Animal : Movable, Eatable {
-    val hasLife: Boolean = true
-
-    override fun move() {
-        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can move")
-    }
-
-    override fun eat() {
-        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can eat")
-    }
-}
-
-class Dog : Animal() {
-    fun bark() {
-        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can bark")
-    }
-}
-
-class Human : Animal(), Speakable {
-    override fun speak() {
-        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can speak")
-    }
-}
-
-open class Robot : Movable {
-    override fun move() {
-        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can move")
-    }
-}
-
-class TalkingRobot : Robot(), Speakable {
-    override fun speak() {
-        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can speak")
-    }
-}
+//        val dog = Dog()
+//        dog.bark()
+//        val human = Human()
+//        Log.d(LOG_TAG, "I am ${human.javaClass.simpleName}, I have life")
+//        val robot = Robot()
+//        val talkingRobot = TalkingRobot()
+//
+//        var movable: Movable = dog
+//        movable.move()
+//        movable = human
+//        movable.move()
+//        movable = robot
+//        movable.move()
+//        movable = talkingRobot
+//        movable.move()
+//        var eatable: Eatable = dog
+//        eatable.eat()
+//        eatable = human
+//        eatable.eat()
+//        var speakable: Speakable = human
+//        speakable.speak()
+//        speakable = talkingRobot
+//        speakable.speak()
+//        speakable = human
+//        speakable.speak()
+//    }
+//}
+//
+//const val LOG_TAG = "DemoLogs"
+//
+//interface Movable {
+//    fun move()
+//}
+//
+//interface Eatable {
+//    fun eat()
+//}
+//
+//interface Speakable {
+//    fun speak()
+//}
+//
+//abstract class Animal : Movable, Eatable {
+//    val hasLife: Boolean = true
+//
+//    override fun move() {
+//        Log.d(LOG_TAG, "I am ${TAG}, I can move")
+//    }
+//
+//    override fun eat() {
+//        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can eat")
+//    }
+//}
+//
+//class Dog : Animal() {
+//    fun bark() {
+//        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can bark")
+//    }
+//}
+//
+//class Human : Animal(), Speakable {
+//    override fun speak() {
+//        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can speak")
+//    }
+//}
+//
+//open class Robot : Movable {
+//    override fun move() {
+//        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can move")
+//    }
+//}
+//
+//class TalkingRobot : Robot(), Speakable {
+//    override fun speak() {
+//        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can speak")
+//    }
+//}
 
 
 //        var result = sum(30, 50)
