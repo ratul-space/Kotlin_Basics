@@ -18,8 +18,11 @@ class MainActivity : AppCompatActivity() {
             fun(massage: String) {
                 Log.d(TAG, massage)
             })
-        pringString("Welcome from Lamda Exoression 1",
-            { massage: String -> Log.d(TAG, massage) }) //Lamda expression
+        pringString("Welcome from Lamda Exoression 1", { massage: String -> Log.d(TAG, massage) })
+        pringString(
+            "Welcome from Lamda Exoression 2",
+            { massage -> Log.d(TAG, massage) })//Lamda expression
+
     }
 
     private fun pringString(str: String, execFun: (msg: String) -> Unit) {
