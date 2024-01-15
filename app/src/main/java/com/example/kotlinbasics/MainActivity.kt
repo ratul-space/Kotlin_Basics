@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         pringString(
             "Welcome from Lamda Exoression 2",
             { massage -> Log.d(TAG, massage) })//Lamda expression
+        pringString("Welcome from Lamda Exoression 3", { Log.d(TAG, it) })//Lamda expression
 
     }
 
