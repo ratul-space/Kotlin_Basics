@@ -1,6 +1,5 @@
 package com.example.kotlinbasics
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -8,20 +7,26 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private val tAG: String = javaClass.simpleName
+    private val TAG: String = javaClass.simpleName
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         debugPrint("Welcome from a normal function")
         pringString("Welcome from a higher order function", this::debugPrint)
+        pringString("Welcome from anonymous function",
+            fun(massage: String) {
+                Log.d(TAG, massage)
+            })
+        pringString("Welcome from Lamda Exoression 1",
+            { massage: String -> Log.d(TAG, massage) }) //Lamda expression
     }
 
-    fun pringString(str: String, execFun: (msg: String) -> Unit) {
+    private fun pringString(str: String, execFun: (msg: String) -> Unit) {
         return execFun(str)
     }
 
-    fun debugPrint(msg: String): Unit {
+    private fun debugPrint(msg: String) {
         Log.d(TAG, msg)
     }
 }
