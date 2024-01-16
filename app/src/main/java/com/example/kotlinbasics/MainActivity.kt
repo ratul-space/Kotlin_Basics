@@ -12,42 +12,70 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val outerObj = Outer()
-        outerObj.doSomething()
+        Log.d(
+            TAG,
+            "MyDbConnection: dbName = ${MyDbConnection.dbName}, isOpen = ${MyDbConnection.isOpen()}"
+        )
+        var cookieTwo = Cookie.create()
+        Log.d(TAG, "Cookie: myName = ${Cookie.myName}")
 
-        val nestedObj = Outer.Nested()
-        nestedObj.doSomething()
 
-        val innerObj1 = outerObj.Inner()
-        innerObj1.doSomething()
     }
 }
 
-class Outer {
-    private val name: String = "Outer"
-    fun doSomething() {
-        Log.d("Main Activity", "I am from Outer class and my name is $name")
-    }
+open class DbConnection(dbName: String) {
+    var dbName: String = dbName
+}
 
-    val abc = 200
+object MyDbConnection : DbConnection("Connection1") {
+    fun isOpen() = true
+}
 
-    class Nested {
-        private val name: String = "Nested"
-        fun doSomething() {
-            Log.d("Main Activity", "I am from Nested class and my name is $name")
-        }
-    }
-
-    inner class Inner {
-        private val name: String = "Inner"
-        fun doSomething() {
-            Log.d(
-                "Main Activity",
-                "I am from Inner class and my name is $name. My parents name is ${this@Outer.name}, proverty abc = $abc"
-            )
-        }
+class Cookie {
+    companion object {
+        fun create() = Cookie()
+        var myName: String = javaClass.simpleName
     }
 }
+
+
+//
+//        val outerObj = Outer()
+//        outerObj.doSomething()
+//
+//        val nestedObj = Outer.Nested()
+//        nestedObj.doSomething()
+//
+//        val innerObj1 = outerObj.Inner()
+//        innerObj1.doSomething()
+//    }
+//}
+//
+//class Outer {
+//    private val name: String = "Outer"
+//    fun doSomething() {
+//        Log.d("Main Activity", "I am from Outer class and my name is $name")
+//    }
+//
+//    val abc = 200
+//
+//    class Nested {
+//        private val name: String = "Nested"
+//        fun doSomething() {
+//            Log.d("Main Activity", "I am from Nested class and my name is $name")
+//        }
+//    }
+//
+//    inner class Inner {
+//        private val name: String = "Inner"
+//        fun doSomething() {
+//            Log.d(
+//                "Main Activity",
+//                "I am from Inner class and my name is $name. My parents name is ${this@Outer.name}, proverty abc = $abc"
+//            )
+//        }
+//    }
+//}
 //        debugPrint("Welcome from a normal function")
 //        pringString("Welcome from a higher order function", this::debugPrint)
 //        pringString("Welcome from anonymous function",
