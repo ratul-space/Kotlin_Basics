@@ -23,6 +23,12 @@ class MainActivity : AppCompatActivity() {
             "Welcome from Lamda Exoression 2"
         ) { massage -> Log.d(TAG, massage) }//Lamda expression
         pringString("Welcome from Lamda Exoression 3") { Log.d(TAG, it) }//Lamda expression
+        val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+        var sumOfEvents = 0
+        numbers.filter { it % 2 == 0 }.forEach {
+            sumOfEvents += it
+        }
+        Log.d(TAG, "sum of events = $sumOfEvents")
 
     }
 
