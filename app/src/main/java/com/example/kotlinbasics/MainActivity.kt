@@ -12,49 +12,74 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var presonOne = Preson("Ratul", 19)
+
+        presonOne++
+        presonOne++
+
+        Log.d(TAG, "Current age of ${presonOne.name} is ${presonOne.age}")
+
+        presonOne--
+
+        Log.d(TAG, "Current age of ${presonOne.name} is ${presonOne.age}")
+    }
+}
+
+data class Preson(var name: String, var age: Int) {
+    operator fun inc(): Preson {
+        this.age++
+        return this
+    }
+
+    operator fun dec(): Preson {
+        this.age--
+        return this
+    }
+}
+
 //        Log.d(
 //            TAG,
 //            "MyDbConnection: dbName = ${MyDbConnection.dbName}, isOpen = ${MyDbConnection.isOpen()}"
 //        )
 //        var cookieTwo = Cookie.create()
 //        Log.d(TAG, "Cookie: myName = ${Cookie.myName}")
-
-        val cookieThree = Cookie.Factory.create("Cookie three")
-        Log.d(TAG, "Cookie three: name = ${cookieThree.name}")
-        val cookieFour = Cookie.Factory.create("Cookie four")
-        Log.d(TAG, "Cookie four: name = ${cookieFour.name}")
-
-
-    }
-}
-
-open class DbConnection(dbName: String) {
-    var dbName: String = dbName
-}
-
-object MyDbConnection : DbConnection("Connection1") {
-    fun isOpen() = true
-}
-
-//class Cookie {
-//    companion object {
-//        fun create() = Cookie()
-//        var myName: String = javaClass.simpleName
+//
+//        val cookieThree = Cookie.Factory.create("Cookie three")
+//        Log.d(TAG, "Cookie three: name = ${cookieThree.name}")
+//        val cookieFour = Cookie.Factory.create("Cookie four")
+//        Log.d(TAG, "Cookie four: name = ${cookieFour.name}")
+//
+//
 //    }
 //}
-class Cookie {
-    private constructor()
 
-    var name: String = ""
-
-    companion object Factory {
-        fun create(name: String): Cookie {
-            var ret = Cookie()
-            ret.name = name
-            return ret
-        }
-    }
-}
+//open class DbConnection(dbName: String) {
+//    var dbName: String = dbName
+//}
+//
+//object MyDbConnection : DbConnection("Connection1") {
+//    fun isOpen() = true
+//}
+//
+////class Cookie {
+////    companion object {
+////        fun create() = Cookie()
+////        var myName: String = javaClass.simpleName
+////    }
+////}
+//class Cookie {
+//    private constructor()
+//
+//    var name: String = ""
+//
+//    companion object Factory {
+//        fun create(name: String): Cookie {
+//            var ret = Cookie()
+//            ret.name = name
+//            return ret
+//        }
+//    }
+//}
 
 
 //
