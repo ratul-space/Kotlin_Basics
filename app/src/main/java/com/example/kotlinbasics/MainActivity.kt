@@ -12,12 +12,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d(
-            TAG,
-            "MyDbConnection: dbName = ${MyDbConnection.dbName}, isOpen = ${MyDbConnection.isOpen()}"
-        )
-        var cookieTwo = Cookie.create()
-        Log.d(TAG, "Cookie: myName = ${Cookie.myName}")
+//        Log.d(
+//            TAG,
+//            "MyDbConnection: dbName = ${MyDbConnection.dbName}, isOpen = ${MyDbConnection.isOpen()}"
+//        )
+//        var cookieTwo = Cookie.create()
+//        Log.d(TAG, "Cookie: myName = ${Cookie.myName}")
+
+        val cookieThree = Cookie.Factory.create("Cookie three")
+        Log.d(TAG, "Cookie three: name = ${cookieThree.name}")
+        val cookieFour = Cookie.Factory.create("Cookie four")
+        Log.d(TAG, "Cookie four: name = ${cookieFour.name}")
 
 
     }
@@ -31,10 +36,23 @@ object MyDbConnection : DbConnection("Connection1") {
     fun isOpen() = true
 }
 
+//class Cookie {
+//    companion object {
+//        fun create() = Cookie()
+//        var myName: String = javaClass.simpleName
+//    }
+//}
 class Cookie {
-    companion object {
-        fun create() = Cookie()
-        var myName: String = javaClass.simpleName
+    private constructor()
+
+    var name: String = ""
+
+    companion object Factory {
+        fun create(name: String): Cookie {
+            var ret = Cookie()
+            ret.name = name
+            return ret
+        }
     }
 }
 
