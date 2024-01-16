@@ -12,34 +12,60 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        debugPrint("Welcome from a normal function")
-        pringString("Welcome from a higher order function", this::debugPrint)
-        pringString("Welcome from anonymous function",
-            fun(massage: String) {
-                Log.d(TAG, massage)
-            })
-        pringString("Welcome from Lamda Exoression 1") { massage: String -> Log.d(TAG, massage) }
-        pringString(
-            "Welcome from Lamda Exoression 2"
-        ) { massage -> Log.d(TAG, massage) }//Lamda expression
-        pringString("Welcome from Lamda Exoression 3") { Log.d(TAG, it) }//Lamda expression
-        val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-        var sumOfEvents = 0
-        numbers.filter { it % 2 == 0 }.forEach {
-            sumOfEvents += it
-        }
-        Log.d(TAG, "sum of events = $sumOfEvents")
+        val outerObj = Outer()
+        outerObj.doSomething()
 
-    }
+        val nestedObj = Outer.Nested()
+        nestedObj.doSomething()
 
-    private fun pringString(str: String, execFun: (msg: String) -> Unit) {
-        return execFun(str)
-    }
 
-    private fun debugPrint(msg: String) {
-        Log.d(TAG, msg)
     }
 }
+
+class Outer {
+    private val name: String = "Outer"
+    fun doSomething() {
+        Log.d("Main Activity", "I am from Outer class and my name is $name")
+    }
+
+    val abc = 200
+
+    class Nested {
+        private val name: String = "Nested"
+        fun doSomething() {
+            Log.d("Main Activity", "I am from Nested class and my name is $name")
+        }
+
+    }
+}
+//        debugPrint("Welcome from a normal function")
+//        pringString("Welcome from a higher order function", this::debugPrint)
+//        pringString("Welcome from anonymous function",
+//            fun(massage: String) {
+//                Log.d(TAG, massage)
+//            })
+//        pringString("Welcome from Lamda Exoression 1") { massage: String -> Log.d(TAG, massage) }
+//        pringString(
+//            "Welcome from Lamda Exoression 2"
+//        ) { massage -> Log.d(TAG, massage) }//Lamda expression
+//        pringString("Welcome from Lamda Exoression 3") { Log.d(TAG, it) }//Lamda expression
+//        val numbers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+//        var sumOfEvents = 0
+//        numbers.filter { it % 2 == 0 }.forEach {
+//            sumOfEvents += it
+//        }
+//        Log.d(TAG, "sum of events = $sumOfEvents")
+//
+//    }
+//
+//    private fun pringString(str: String, execFun: (msg: String) -> Unit) {
+//        return execFun(str)
+//    }
+//
+//    private fun debugPrint(msg: String) {
+//        Log.d(TAG, msg)
+//    }
+
 
 //        val dog = Dog()
 //        dog.bark()
