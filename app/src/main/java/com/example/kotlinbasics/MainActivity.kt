@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         val nestedObj = Outer.Nested()
         nestedObj.doSomething()
 
-
+        val innerObj1 = outerObj.Inner()
+        innerObj1.doSomething()
     }
 }
 
@@ -35,7 +36,16 @@ class Outer {
         fun doSomething() {
             Log.d("Main Activity", "I am from Nested class and my name is $name")
         }
+    }
 
+    inner class Inner {
+        private val name: String = "Inner"
+        fun doSomething() {
+            Log.d(
+                "Main Activity",
+                "I am from Inner class and my name is $name. My parents name is ${this@Outer.name}, proverty abc = $abc"
+            )
+        }
     }
 }
 //        debugPrint("Welcome from a normal function")
