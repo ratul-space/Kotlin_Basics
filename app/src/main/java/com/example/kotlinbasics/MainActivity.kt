@@ -2,7 +2,10 @@ package com.example.kotlinbasics
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 
 
 class MainActivity : AppCompatActivity() {
@@ -12,30 +15,43 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var presonOne = Preson("Ratul", 19)
+        val countries: Array<String> =
+            arrayOf("Bangladesh", "India", "Pakistan", "Afganisthan", "Africa", "Canada")
+        val adaptet =
+            ArrayAdapter<String>(applicationContext, android.R.layout.simple_list_item_1, countries)
 
-        presonOne++
-        presonOne++
+        val Countries = findViewById<ListView>(R.id.Countries)
+        Countries.adapter = adaptet
 
-        Log.d(TAG, "Current age of ${presonOne.name} is ${presonOne.age}")
 
-        presonOne--
-
-        Log.d(TAG, "Current age of ${presonOne.name} is ${presonOne.age}")
     }
 }
 
-data class Preson(var name: String, var age: Int) {
-    operator fun inc(): Preson {
-        this.age++
-        return this
-    }
 
-    operator fun dec(): Preson {
-        this.age--
-        return this
-    }
-}
+//        var presonOne = Preson("Ratul", 19)
+//
+//        presonOne++
+//        presonOne++
+//
+//        Log.d(TAG, "Current age of ${presonOne.name} is ${presonOne.age}")
+//
+//        presonOne--
+//
+//        Log.d(TAG, "Current age of ${presonOne.name} is ${presonOne.age}")
+//    }
+//}
+//
+//data class Preson(var name: String, var age: Int) {
+//    operator fun inc(): Preson {
+//        this.age++
+//        return this
+//    }
+//
+//    operator fun dec(): Preson {
+//        this.age--
+//        return this
+//    }
+//}
 
 //        Log.d(
 //            TAG,
@@ -80,7 +96,6 @@ data class Preson(var name: String, var age: Int) {
 //        }
 //    }
 //}
-
 
 //
 //        val outerObj = Outer()
@@ -146,8 +161,6 @@ data class Preson(var name: String, var age: Int) {
 //    private fun debugPrint(msg: String) {
 //        Log.d(TAG, msg)
 //    }
-
-
 //        val dog = Dog()
 //        dog.bark()
 //        val human = Human()
@@ -225,8 +238,6 @@ data class Preson(var name: String, var age: Int) {
 //        Log.d(LOG_TAG, "I am ${javaClass.simpleName}, I can speak")
 //    }
 //}
-
-
 //        var result = sum(30, 50)
 //        Log.d(TAG, "Result is: $result")
 //        Log.d(TAG, "result is: ${max(30, 20)}")
@@ -278,8 +289,6 @@ data class Preson(var name: String, var age: Int) {
 //            TAG,
 //            " onCreate person three: name = ${personThree.name}, Gender = ${personThree.gender}"
 //        )
-//
-//
 //    }
 //}
 //
@@ -318,7 +327,6 @@ data class Preson(var name: String, var age: Int) {
 //            } else {
 //                throw Exception("Gender must be Male or Female")
 //            }
-
 //        }
 //
 //}
@@ -332,7 +340,6 @@ data class Preson(var name: String, var age: Int) {
 //            return ret
 //        }
 
-
 //    var gender: String = ""
 //    public fun getGender(): String{
 //        return gender
@@ -340,18 +347,3 @@ data class Preson(var name: String, var age: Int) {
 //    public fun setGender(gender: String){
 //        this.gender = gender
 //    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
